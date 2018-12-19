@@ -165,6 +165,11 @@ exports.main = function(args, callback) {
                 var imports = {
                     $protobuf: "protobufjs"
                 };
+                if (argv.grpc === 'js') {
+                    imports['grpc'] = '@grpc/grpc-js';
+                } else if (argv.grpc) {
+                    imports['grpc'] = 'grpc';
+                }
                 importArray.forEach(function(importItem) {
                     imports[getImportName(importItem)] = importItem;
                 });
